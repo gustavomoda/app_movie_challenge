@@ -1,0 +1,15 @@
+{
+  "@@locale": "en",
+  "appName": "Movie App Challenge",
+  "settingsLabel": "Settings",
+  "dashboardLabel": "Dashboard",
+  "moviesLabel": "Movies",
+
+  "darkMode": "Dark Mode",
+  "errorTitle": "Ops! Something went wrong.",
+  "fatalError": "An unexpected error occurred. Please try again later.",
+  "fatalErrorRequestApi": "Error occurred while accessing the server. Please try again later.",
+  "tryAgainButtonLabel": "Try again"
+
+ 
+}

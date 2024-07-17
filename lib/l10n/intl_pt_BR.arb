@@ -1,0 +1,12 @@
+{
+  "@@locale": "pt_BR",
+  "appName": "Desafio App de Filmes",
+  "settingsLabel": "Configurações",
+  "dashboardLabel": "Painel",
+  "moviesLabel": "Filmes",
+  "darkMode": "Modo Escuro",
+  "errorTitle": "Ops! Algo deu errado.",
+  "fatalError": "Ocorreu um erro inesperado. Por favor, tente novamente mais tarde.",
+  "fatalErrorRequestApi": "Erro ao acessar o servidor. Por favor, tente novamente mais tarde.",
+  "tryAgainButtonLabel": "Tentar novamente"
+}
