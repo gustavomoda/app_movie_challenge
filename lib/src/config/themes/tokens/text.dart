@@ -1,0 +1,16 @@
+enum AppTextTokens {
+  displayLarge,
+  displayMedium,
+  displaySmall,
+  headlineMedium,
+  headlineSmall,
+  titleLarge,
+  titleMedium,
+  titleSmall,
+  bodyLarge,
+  bodyMedium,
+  bodySmall,
+  labelLarge,
+  labelSmall,
+  capiton,
+}
