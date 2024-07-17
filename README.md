@@ -27,7 +27,7 @@ Adopting a package-feature approach, the project is segmented into the following
 
 ## Core Packages
 
-- **Flutter Mobx**: Utilized for state management.
+- **Flutter Bloc**: Utilized for state management.
 - **Provider**: Utilized for simplified state management and resource allocation.
 - **get_it** and **injectable**: Used for dependency injection.
 - **dio**: Facilitates HTTP requests.

@@ -49,6 +49,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
+  bloc:
+    dependency: transitive
+    description:
+      name: bloc
+      sha256: "106842ad6569f0b60297619e9e0b1885c2fb9bf84812935490e6c5275777804e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "8.1.4"
   boolean_selector:
     dependency: transitive
     description:
@@ -254,6 +262,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_bloc:
+    dependency: "direct main"
+    description:
+      name: flutter_bloc
+      sha256: b594505eac31a0518bdcb4b5b79573b8d9117b193cc80cc12e17d639b10aa27a
+      url: "https://pub.dev"
+    source: hosted
+    version: "8.1.6"
   flutter_keyboard_visibility:
     dependency: "direct main"
     description:
@@ -315,14 +331,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_mobx:
-    dependency: "direct main"
-    description:
-      name: flutter_mobx
-      sha256: "859fbf452fa9c2519d2700b125dd7fb14c508bbdd7fb65e26ca8ff6c92280e2e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.2.1+1"
   flutter_secure_storage:
     dependency: "direct main"
     description:
@@ -621,14 +629,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
-  mobx:
-    dependency: transitive
-    description:
-      name: mobx
-      sha256: "63920b27b32ad1910adfe767ab1750e4c212e8923232a1f891597b362074ea5e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.3.3+2"
   mocktail:
     dependency: "direct dev"
     description:
