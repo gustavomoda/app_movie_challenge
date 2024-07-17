@@ -1,0 +1,22 @@
+targets:
+  $default:
+    builders:
+      freezed:
+        generate_for:
+          - lib/src/**/domains/entitites/**.dart
+          - lib/src/**/datasources/**/models/**.dart
+          - lib/src/shared/**.dart
+          - lib/src/**/presenters/controllers/**.dart
+      json_serializable:
+        generate_for:
+          - lib/src/**/domains/entitites/**.dart
+          - lib/src/**/datasources/**/models/**.dart
+          - lib/src/shared/**.dart
+          - lib/src/**/presenters/controllers/**.dart
+        options:
+          disallow_unrecognized_keys: false
+          explicit_to_json: true
+          include_if_null: true
+      injectable_generator:injectable_builder:
+        generate_for:
+          - lib/**.dart
