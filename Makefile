@@ -49,7 +49,33 @@ endif
 test: 
 	@echo "Running tests..."
 	@fvm flutter test --coverage  
- 
+
+coverage: test
+	make coverage_report
+
+coverage_report:
+	@echo "Generating coverage report..."
+	@lcov --remove coverage/lcov.info \
+		'**/i10n/**' \
+		'lib/src/di/*' \
+		'lib/src/features/developer/**'  \
+		'lib/generated-code/*' \
+		'**/generated/**' \
+		'**/*.g.dart' \
+		'**/*.freezed.dart' \
+		'**/*.injectable.dart' \
+		'lib/src/config/themes/tokens/**' \
+		'lib/src/config/routes/**' \
+		'lib/src/shared/exceptions/**' \
+		'lib/src/**/entities/**' \
+		-o coverage/coverage_with_exclusion.info --ignore-errors unused && \
+	cat coverage/coverage_with_exclusion.info > coverage/lcov.info  &&\
+	rm coverage/coverage_with_exclusion.info &&\
+	genhtml coverage/lcov.info -o ./coverage &&\
+	fvm flutter pub run test_cov_console --exclude='lib/generated/,i10n,lib/src/config/themes/tokens/,lib/src/di/,lib/src/config/routes/,entities' &&\
+	echo "\n\n-------------------------\n\nReport generated, open file into navigator: coverage/index.html\n"
+
+
 lint: 
 	@echo "Running lint..."
 	@fvm flutter analyze lib

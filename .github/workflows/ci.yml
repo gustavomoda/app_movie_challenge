@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - release/*
+  workflow_dispatch:
+ 
+jobs:
+ 
+  ci:
+    name: App CI
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup Dart SDK
+      uses: dart-lang/setup-dart@v1
+      with:
+        sdk: stable
+
+    - name: Set up Java
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+
+    - name: Cache Flutter dependencies
+      uses: actions/cache@v2
+      id: cache
+      with:
+        path: |
+          ~/.pub-cache
+          ~/.fvm/flutter_sdk
+        key: ${{ runner.os }}-flutter-${{ hashFiles('apps/**/pubspec.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-flutter-
+
+    - name: Install FVM
+      run: dart pub global activate fvm
+
+    - name: Install Flutter Version
+      run: yes | fvm install
+
+    - name: Install Flutter dependencies
+      run: fvm flutter pub get
+
+    - name: Run i10n
+      run: fvm flutter pub run intl_utils:generate
+
+    - name: Run Build Runner
+      run: fvm dart pub run build_runner build --delete-conflicting-outputs
+
+    - name: Run Flutter format
+      run: |
+        find lib -name "*.dart" \
+          ! -path "lib/generated/*" \
+          ! -path "lib/**injector.config.dart" \
+          ! -path "lib/**injector.module.dart" \
+          ! -path "lib/generated/**" \
+          ! -path "lib/**.g.dart" \
+          ! -path "lib/**.freezed.dart" \
+          xargs fvm dart format -l 100 --set-exit-if-changed
+
+    - name: Run Flutter analyze
+      run: fvm flutter analyze lib
+
+    - name: Run tests
+      run: fvm flutter test --coverage
+    
+    - name: Coverage
+      run: make coverage_report
