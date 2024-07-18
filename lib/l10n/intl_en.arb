@@ -4,12 +4,22 @@
   "settingsLabel": "Settings",
   "dashboardLabel": "Dashboard",
   "moviesLabel": "Movies",
+  "aboutLabel": "About",
+  "menuLabel": "Menu",
+  "developThemeShowcase": "Develop Theme Showcase",
 
   "darkMode": "Dark Mode",
   "errorTitle": "Ops! Something went wrong.",
   "fatalError": "An unexpected error occurred. Please try again later.",
   "fatalErrorRequestApi": "Error occurred while accessing the server. Please try again later.",
-  "tryAgainButtonLabel": "Try again"
+  "tryAgainButtonLabel": "Try again",
+
+  "developerLabel": "Developer",
+  "licenseLabel": "License",
+  "licenseInfo": "This app is licensed under the MIT License",
+  "dataSourceLabel": "Data source",
+  "dataProvidedBy": "Data provided by Golden Raspberry Awards"
+
 
  
 }

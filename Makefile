@@ -58,6 +58,7 @@ coverage_report:
 	@lcov --remove coverage/lcov.info \
 		'**/i10n/**' \
 		'lib/src/di/*' \
+		'lib/main.app' \
 		'lib/src/features/developer/**'  \
 		'lib/generated-code/*' \
 		'**/generated/**' \
@@ -72,7 +73,7 @@ coverage_report:
 	cat coverage/coverage_with_exclusion.info > coverage/lcov.info  &&\
 	rm coverage/coverage_with_exclusion.info &&\
 	genhtml coverage/lcov.info -o ./coverage &&\
-	fvm flutter pub run test_cov_console --exclude='lib/generated/,i10n,lib/src/config/themes/tokens/,lib/src/di/,lib/src/config/routes/,entities' &&\
+	fvm flutter pub run test_cov_console --exclude='developer,lib/main.dart,lib/generated/,i10n,lib/src/config/themes/tokens/,lib/src/di/,lib/src/config/routes/,entities,.freezed.dart,.g.dart,lib/src/shared/exceptions/' &&\
 	echo "\n\n-------------------------\n\nReport generated, open file into navigator: coverage/index.html\n"
 
 

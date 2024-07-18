@@ -12,7 +12,7 @@ import '../externals/app_logger.dart';
 
 @Singleton()
 class AppLocale with ChangeNotifier {
-  AppLocale(this.appLogger);
+  AppLocale(this.appLogger, this.settingsRepository);
 
   final _defaultLocale = const Locale.fromSubtags(languageCode: 'pt', countryCode: 'BR');
 
@@ -27,15 +27,16 @@ class AppLocale with ChangeNotifier {
 
   List<Locale> get supportedLocales => S.delegate.supportedLocales;
   final AppLogger appLogger;
+  final AppSettingsRepository settingsRepository;
 
   Future<void> restore() async {
     try {
-      final saved = await appInjector.get<AppSettingsRepository>().getLanguage();
+      final saved = await settingsRepository.getLanguage();
       _currentAppLocale = supportedLocales.where((e) => e.toLanguageTag() == saved).firstOrNull;
       _currentAppLocale ??= _defaultLocale;
       notifyListeners();
     } catch (e) {
-      appLogger.w('[AppLocale] Error saving language: $e');
+      appLogger.w('[AppLocale] Error restoring language: $e');
       _currentAppLocale = _defaultLocale;
     }
   }

@@ -1,12 +1,18 @@
 {
   "@@locale": "pt_BR",
+ 
   "appName": "Desafio App de Filmes",
   "settingsLabel": "Configurações",
   "dashboardLabel": "Painel",
   "moviesLabel": "Filmes",
+
   "darkMode": "Modo Escuro",
   "errorTitle": "Ops! Algo deu errado.",
   "fatalError": "Ocorreu um erro inesperado. Por favor, tente novamente mais tarde.",
   "fatalErrorRequestApi": "Erro ao acessar o servidor. Por favor, tente novamente mais tarde.",
-  "tryAgainButtonLabel": "Tentar novamente"
+  "tryAgainButtonLabel": "Tentar novamente",
+
+  "developerLabel": "Desenvolvedor",
+  "licenseInfo": "Este aplicativo é licenciado sob a Licença MIT",
+  "dataProvidedBy": "Dados fornecidos por Golden Raspberry Awards"
 }
