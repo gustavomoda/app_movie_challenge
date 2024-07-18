@@ -66,7 +66,7 @@ jobs:
           ! -path "lib/generated/**" \
           ! -path "lib/**.g.dart" \
           ! -path "lib/**.freezed.dart" \
-          xargs fvm dart format -l 100 --set-exit-if-changed
+          | xargs fvm dart format -l 100 --set-exit-if-changed
 
     - name: Run Flutter analyze
       run: fvm flutter analyze lib
