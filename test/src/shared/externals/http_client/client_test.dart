@@ -10,7 +10,7 @@ import 'package:dio/dio.dart' as external_dio;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockDio extends Mock implements external_dio.Dio {}
+import '../../../../fixtures/extenal_mock.dart';
 
 void main() {
   const path = 'test/path';
@@ -33,6 +33,7 @@ void main() {
     });
 
     test('should create a default Dio instance with the given options', () {
+      // Arrange
       final options = ClientOptions(
         baseUrl: 'http://example.com',
         connectTimeout: const Duration(seconds: 5),
@@ -40,10 +41,13 @@ void main() {
         receiveTimeout: const Duration(seconds: 5),
         globalTimeout: const Duration(seconds: 10),
       );
+
+      // Act
       final instance = AppHttpClientImpl(
         options: options,
       );
 
+      // Assert
       expect(
         instance.dioForTests.options.baseUrl,
         equals('http://example.com/'),
@@ -63,6 +67,7 @@ void main() {
     });
 
     test('should add an interceptor to the Dio interceptors list', () {
+      // Arrange
       final appHttpInterceptors = AppHttpInterceptors(appInjector.get<AppLogger>());
       final instance = AppHttpClientImpl(
         options: ClientOptions(
@@ -74,6 +79,7 @@ void main() {
         ),
       )..addInterceptor(appHttpInterceptors);
 
+      // Act and Assert
       expect(
         instance.dioForTests.interceptors.last,
         equals(appHttpInterceptors),
@@ -81,27 +87,26 @@ void main() {
     });
 
     test('should return a Response on successful GET', () async {
-      // Prepare the Dio response
+      // Arange
       final response = external_dio.Response(
         requestOptions: external_dio.RequestOptions(path: path),
         data: 'Successful data',
         statusCode: 200,
         statusMessage: 'OK',
       );
-
-      // Setup the mock to return the prepared response
       when(() => mockDio.get<String>(any())).thenAnswer((_) async => response);
 
-      // Call the method
+      // Act
       final result = await httpClient.get<String>(path);
 
-      // Verify the results
+      // Assert
       expect(result.data, equals('Successful data'));
       expect(result.statusCode, equals(200));
       expect(result.isOk, isTrue);
     });
 
     test('should return a Response on successful GET when List responses', () async {
+      // Arrange
       final data = [
         {'id': 1, 'name': 'John'},
         {'id': 2, 'name': 'Jane'},
@@ -114,13 +119,12 @@ void main() {
         statusMessage: 'OK',
       );
 
-      // Setup the mock to return the prepared response
       when(() => mockDio.get<String>(any())).thenAnswer((_) async => response);
 
-      // Call the method
+      // Act
       final result = await httpClient.getAsList<Map<String, dynamic>>(path);
 
-      // Verify the results
+      // Assert
       expect(result.data, isA<List>());
       expect(result.data, equals(data));
       expect(result.statusCode, equals(200));
@@ -129,6 +133,8 @@ void main() {
 
     test('should throw AppHttpClientException on Dio exception', () {
       when(
+        // Arrange
+
         // ignore: discarded_futures
         () => mockDio.get<String>(
           any(),
@@ -148,6 +154,7 @@ void main() {
         );
       });
 
+      // Act and Assert
       expect(
         () async => httpClient.get<String>(path),
         throwsA(isA<UserFriendlyError>()),
@@ -155,6 +162,7 @@ void main() {
     });
 
     test('should throw uncaught Exception', () {
+      // Arrange
       when(
         // ignore: discarded_futures
         () => mockDio.get<String>(
@@ -165,6 +173,7 @@ void main() {
         throw Exception('Uncaught exception');
       });
 
+      // Act and Assert
       expect(
         () async => httpClient.get<String>(path),
         throwsA(isA<UserFriendlyError>()),

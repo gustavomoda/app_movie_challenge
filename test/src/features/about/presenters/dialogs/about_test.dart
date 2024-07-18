@@ -8,9 +8,11 @@ import '../../../../../flutter_test_config.dart';
 void main() {
   group('AppAboutDialog Widget Tests', () {
     testWidgets('should render AboutDialog correctly', (tester) async {
+      // Act
       await tester.pumpWidget(wrapperMaterialAppForTest(AppAboutDialog()));
       await tester.pumpAndSettle();
 
+      // Assert
       expect(find.byType(AppAboutDialog), findsOneWidget);
       expect(find.byType(AppIcon), findsOneWidget);
 

@@ -6,6 +6,7 @@ void main() {
   group('AppHttpClient:', () {
     group('AppHttpClientException:', () {
       test('should handle connection timeout DioException', () {
+        // Arrange
         final dioException = DioException(
           requestOptions: RequestOptions(),
           type: DioExceptionType.connectionTimeout,
@@ -14,12 +15,14 @@ void main() {
 
         final exception = AppHttpClientException.fromDioException(dioException);
 
+        // Act and Assert
         expect(exception.errorType, ErrorType.connectionTimeout);
         expect(exception.statusCode, 500);
         expect(exception.statusMessage, '');
       });
 
       test('should handle bad certificate DioException', () {
+        // Arrange
         final dioException = DioException(
           requestOptions: RequestOptions(),
           type: DioExceptionType.badCertificate,
@@ -28,12 +31,14 @@ void main() {
 
         final exception = AppHttpClientException.fromDioException(dioException);
 
+        // Act and Assert
         expect(exception.errorType, ErrorType.badCertificate);
         expect(exception.statusCode, 500);
         expect(exception.statusMessage, '');
       });
 
       test('should handle bad response DioException', () {
+        // Arrange
         final dioException = DioException(
           requestOptions: RequestOptions(),
           type: DioExceptionType.badResponse,
@@ -42,12 +47,14 @@ void main() {
 
         final exception = AppHttpClientException.fromDioException(dioException);
 
+        // Act and Assert
         expect(exception.errorType, ErrorType.badResponse);
         expect(exception.statusCode, 500);
         expect(exception.statusMessage, '');
       });
 
       test('should handle cancel DioException', () {
+        // Arrange
         final dioException = DioException(
           requestOptions: RequestOptions(),
           type: DioExceptionType.cancel,
@@ -56,12 +63,14 @@ void main() {
 
         final exception = AppHttpClientException.fromDioException(dioException);
 
+        // Act and Assert
         expect(exception.errorType, ErrorType.cancel);
         expect(exception.statusCode, 500);
         expect(exception.statusMessage, '');
       });
 
       test('should handle connectionError DioException', () {
+        // Arrange
         final dioException = DioException(
           requestOptions: RequestOptions(),
           type: DioExceptionType.connectionError,
@@ -70,12 +79,14 @@ void main() {
 
         final exception = AppHttpClientException.fromDioException(dioException);
 
+        // Act and Assert
         expect(exception.errorType, ErrorType.connectionError);
         expect(exception.statusCode, 500);
         expect(exception.statusMessage, '');
       });
 
       test('should handle unknown DioException', () {
+        // Arrange
         final dioException = DioException(
           requestOptions: RequestOptions(),
           error: 'Unknown Error',
@@ -83,6 +94,7 @@ void main() {
 
         final exception = AppHttpClientException.fromDioException(dioException);
 
+        // Act and Assert
         expect(exception.errorType, ErrorType.unknown);
         expect(exception.statusCode, 500);
         expect(exception.statusMessage, '');

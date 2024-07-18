@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../config/routes/app_route.dart';
+import '../../../dashboard/presenters/dashboard.dart';
+import '../../../movies/presenters/screens/movies.dart';
 import '../../domain/entities/app_menu.dart';
 import '../widgets/drawer/menu_drawer.dart';
 
@@ -16,6 +18,8 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
   final scaffoldState = GlobalKey<ScaffoldState>();
 
   int currentIndex = 0;
+
+  final PageController controller = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,17 +48,26 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
           } else {
             setState(() {
               currentIndex = index;
+              controller.animateToPage(
+                index,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+              );
             });
           }
         },
       ),
-      body: ListView(
+      body: PageView(
+        controller: controller,
         children: const [
-          Padding(
-            padding: EdgeInsets.all(16),
-            child: Text('TODO'),
-          ),
+          DashboardScreen(),
+          MoviesScreen(),
         ],
+        onPageChanged: (index) {
+          setState(() {
+            currentIndex = index;
+          });
+        },
       ),
     );
   }

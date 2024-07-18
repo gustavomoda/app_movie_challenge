@@ -12,7 +12,10 @@ class AppHttpInterceptors extends Interceptor {
   final AppLogger logger;
 
   @override
-  Future<void> onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+  Future<void> onRequest(
+    RequestOptions options,
+    RequestInterceptorHandler handler,
+  ) async {
     logger.d(
       'Requesting  ${options.method} ${options.uri}: '
       '\n\t headers=${options.headers}'
@@ -34,7 +37,12 @@ class AppHttpInterceptors extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
     logger.d(
-      'Requesting  ${err.error} ${err.response}',
+      'Error Request: ${err.requestOptions.method} ${err.requestOptions.uri}: '
+      '\n\t headers=${err.requestOptions.headers}'
+      '\n\t queryParameters=${err.requestOptions.queryParameters}'
+      '\n\t error type=${err.type}'
+      '\n\t error=${err.error}'
+      '\n\t response=${err.response?.data}',
     );
     super.onError(err, handler);
   }

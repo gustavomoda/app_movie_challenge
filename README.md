@@ -15,9 +15,10 @@ An application showcasing the nominees and winners of the Worst Picture category
 
 The project is structured using Clean Architecture, organized into several layers:
 
-- **Data**: Contains data sources and repositories.
-- **Domain**: Comprises use cases and entities.
-- **Presentation**: Encompasses the UI and business logic.
+- **datasources**: Contains remote and local data sources.
+- **domain**: Comprises entities, use cases, and repositories.
+- **presenters**: Encompasses the user interface components and UI controllers, including blocs, to bridge presentation logic and the view layer.
+
 
 Adopting a package-feature approach, the project is segmented into the following packages:
 
@@ -127,18 +128,35 @@ There are three ways to run the app: using the Makefile, running the commands ma
 
 Below are the goals available in the Makefile:
 
+#### Setup and Installation
 - `setup-dev`: Set up the development environment.
 - `install`: Install the dependencies.
+
+#### Building and Watching
 - `build-runner`: Run the build runner.
 - `watch`: Run the build runner in watch mode.
+
+#### Running and Debugging
 - `debug-app`: Run the app on an emulator or physical device.
+
+#### Testing and Coverage
 - `test`: Run the tests.
-- `lint`: Run the linter.
-- `format_code`: Run the code formatter.
+- `coverage`: Run the tests and generate a coverage report in the `coverage` and outputs the report in the console, Open the file `coverage/index.html` to access the report.
+
+#### Code Quality
+- `lint`: Run the linter on the lib directory to analyze the Dart code for potential errors.
+- `format_code`: Format the code in the lib and test directories, excluding generated files and specific patterns, with a line length of 100 characters.
+
+#### Internationalization
 - `i10n-generate`: Generate the internationalization files.
-- `local_ci`: Execute lint, format_code, and test.
-- `rebuild`: Rebuild the project. Executes clean, install, and build-runner.
-- `clean`: Clean the project.
-### Author
+
+#### Continuous Integration
+- `local_ci`: Execute format_code, lint, and test in sequence. This serves as a local continuous integration check to ensure code quality and correctness before committing.
+
+#### Cleaning and Rebuilding
+- `rebuild`: Rebuild the project. Executes clean, install, and build-runner in sequence.
+- `clean`: Clean the project by removing generated files and directories to ensure a fresh start.
+
+## Author
 - Luis Gustavo Moda: gustavo.moda@gmail.com
 

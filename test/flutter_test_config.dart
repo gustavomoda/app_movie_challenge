@@ -3,6 +3,8 @@ import 'package:app_movie_challenge/generated/l10n.dart';
 import 'package:app_movie_challenge/src/config/themes/app_theme.dart';
 import 'package:app_movie_challenge/src/features/settings/domains/repositories/settings.dart';
 import 'package:app_movie_challenge/src/shared/externals/app_logger.dart';
+import 'package:app_movie_challenge/src/shared/externals/http_client/client.dart';
+import 'package:app_movie_challenge/src/shared/externals/http_client/options.dart';
 import 'package:app_movie_challenge/src/shared/externals/storage/app_storage.dart';
 import 'package:app_movie_challenge/src/shared/i10n/app_locale.dart';
 import 'package:dio/dio.dart';
@@ -17,19 +19,25 @@ import 'package:provider/provider.dart';
 
 import 'fixtures/app_mocks.dart';
 import 'fixtures/extenal_mock.dart';
-import 'src/shared/externals/http_client/http_interceptors_test.dart';
 
 final appTestInjector = GetIt.instance;
 
 Future<void> testExecutable(FutureOr<void> Function() testMain) async {
   await S.load(const Locale('en', 'US'));
   await S.load(const Locale('pt', 'pt_BR'));
+
+  final clientOptions = ClientOptions(
+    baseUrl: 'https://foo.api',
+    connectTimeout: const Duration(seconds: 5),
+    sendTimeout: const Duration(seconds: 8),
+    receiveTimeout: const Duration(seconds: 15),
+  );
   final dio = Dio(
     BaseOptions(
-      // baseUrl: AppConfig.instance.urlApi,
-      connectTimeout: const Duration(seconds: 5),
-      sendTimeout: const Duration(seconds: 8),
-      receiveTimeout: const Duration(seconds: 15),
+      baseUrl: clientOptions.baseUrl,
+      connectTimeout: clientOptions.connectTimeout,
+      sendTimeout: clientOptions.sendTimeout,
+      receiveTimeout: clientOptions.receiveTimeout,
     ),
   );
   final dioAdapterMock = DioAdapter(dio: dio);
@@ -52,12 +60,11 @@ Future<void> testExecutable(FutureOr<void> Function() testMain) async {
         flutterSecureStorage: mockFlutterStorage,
         logger: mockAppLogger,
       ),
+    )
+    ..registerSingleton<AppHttpClient>(
+      AppHttpClientImpl(options: clientOptions, dio: dio),
+      signalsReady: true,
     );
-  // ..registerSingleton<AppHttpClient>(
-  //   AppHttpClientImpl({dio: dio}),
-  //   instanceName: 'clientRestApiTest',
-  //   signalsReady: true,
-  // );
   setUp(() {
     dioAdapterMock.reset();
     reset(mockAppLogger);

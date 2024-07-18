@@ -1,18 +1,41 @@
 {
   "@@locale": "pt_BR",
- 
-  "appName": "Desafio App de Filmes",
+  "appName": "Desafio do App de Filmes",
   "settingsLabel": "Configurações",
   "dashboardLabel": "Painel",
   "moviesLabel": "Filmes",
+  "aboutLabel": "Sobre",
+  "menuLabel": "Menu",
+  "developThemeShowcase": "Mostrar Tema de Desenvolvimento",
 
   "darkMode": "Modo Escuro",
   "errorTitle": "Ops! Algo deu errado.",
   "fatalError": "Ocorreu um erro inesperado. Por favor, tente novamente mais tarde.",
-  "fatalErrorRequestApi": "Erro ao acessar o servidor. Por favor, tente novamente mais tarde.",
-  "tryAgainButtonLabel": "Tentar novamente",
+  "fatalErrorRequestApi": "Ocorreu um erro ao acessar o servidor. Por favor, tente novamente mais tarde.",
+  "tryAgainButtonLabel": "Tentar Novamente",
 
   "developerLabel": "Desenvolvedor",
-  "licenseInfo": "Este aplicativo é licenciado sob a Licença MIT",
-  "dataProvidedBy": "Dados fornecidos por Golden Raspberry Awards"
+  "licenseLabel": "Licença",
+  "licenseInfo": "Este aplicativo está licenciado sob a Licença MIT",
+  "dataSourceLabel": "Fonte de Dados",
+  "dataProvidedBy": "Dados fornecidos pelo Golden Raspberry Awards",
+  
+  "moviesNotFoundMessage": "Filmes não encontrados",
+
+  "winnersOnlyLabel": "Apenas Vencedores",
+  "yearLabel": "Ano",
+  "all": "Todos",
+
+  "producersLabel": "{count, plural, =0{Nenhum produtor} =1{Produtor} other{Produtores}}:",
+  "@producersLabel": {
+      "placeholders": {
+          "count": {}
+      }
+  },
+  "studiosLabel": "{count, plural, =0{Nenhum estúdio} =1{Estúdio} other{Estúdios}}:",
+  "@studiosLabel": {
+      "placeholders": {
+          "count": {}
+      }
+  }
 }

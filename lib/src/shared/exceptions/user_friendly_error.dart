@@ -67,4 +67,18 @@ class UserFriendlyError with _$UserFriendlyError implements Exception {
         cause: e,
         stackTrace: null,
       );
+
+  Object? getCause() => map(
+        info: (e) => null,
+        warning: (e) => e.cause,
+        fatal: (e) => e.cause,
+        error: (e) => e.cause,
+      );
+
+  StackTrace? getStackTrace() => map(
+        info: (e) => null,
+        warning: (e) => e.stackTrace,
+        fatal: (e) => e.stackTrace,
+        error: (e) => e.stackTrace,
+      );
 }

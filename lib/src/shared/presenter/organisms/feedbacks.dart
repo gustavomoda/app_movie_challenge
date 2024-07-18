@@ -5,6 +5,7 @@ import '../../../config/themes/app_theme.dart';
 import '../../exceptions/user_friendly_error.dart';
 import '../atoms/gap.dart';
 import '../atoms/texts/texts.dart';
+import 'scafolds.dart';
 
 class AppUserFeedbacks extends StatelessWidget {
   const AppUserFeedbacks({
@@ -43,7 +44,7 @@ class AppUserFeedbacks extends StatelessWidget {
               error: (_) => Icons.error_outline_rounded,
             ),
             color: color,
-            size: 100,
+            size: MediaQuery.of(context).size.height * 0.2,
           ),
           AppGaps.lg,
           AppTexts.headlineSmall(
@@ -68,4 +69,25 @@ class AppUserFeedbacks extends StatelessWidget {
       ),
     );
   }
+
+  static Future<T?> openDialog<T>(
+    final BuildContext context,
+    final UserFriendlyError? error,
+    final VoidCallback onTryAgain,
+  ) =>
+      showDialog<T>(
+        context: context,
+        barrierDismissible: false,
+        useSafeArea: false,
+        useRootNavigator: false,
+        builder: (_) => AppScaffolds.raw(
+          body: AppUserFeedbacks(
+            error: error,
+            onTryAgain: () {
+              onTryAgain();
+              Navigator.of(context).pop();
+            },
+          ),
+        ),
+      );
 }

@@ -9,6 +9,8 @@ import 'options.dart';
 import 'response.dart';
 
 abstract class AppHttpClient {
+  abstract final ClientOptions options;
+
   Future<Response<T>> get<T>(
     String path, {
     Map<String, dynamic>? queryParameters,
@@ -37,6 +39,8 @@ final class AppHttpClientImpl implements AppHttpClient {
             );
 
   final extenal_dio.Dio _dio;
+
+  @override
   final ClientOptions options;
 
   @visibleForTesting

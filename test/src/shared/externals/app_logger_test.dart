@@ -19,6 +19,7 @@ class _Output extends extern_logger.ConsoleOutput {
 void main() {
   group('AppLogger:', () {
     test('should log flutter errors correctly', () {
+      // Arrange
       final output = _Output();
       final logger = AppLogger(
         level: extern_logger.Level.debug,
@@ -30,13 +31,16 @@ void main() {
         stack: StackTrace.current,
       );
 
+      // Act
       logger.flutterError(flutterErrorDetails);
 
+      // Assert
       expect(output.outputs, isNotEmpty);
       expect(output.outputs.first.join('\n'), contains('Test Flutter error'));
     });
 
     test('should log platform errors correctly', () {
+      // Arrange
       final output = _Output();
       final logger = AppLogger(
         level: extern_logger.Level.debug,
@@ -46,13 +50,16 @@ void main() {
       final exception = Exception('Test Platform error');
       final stackTrace = StackTrace.current;
 
+      // Act
       logger.platformError(exception, stackTrace);
 
+      // Assert
       expect(output.outputs, isNotEmpty);
       expect(output.outputs.first.join('\n'), contains('Test Platform error'));
     });
 
     test('should return true on platform error', () {
+      // Arrange
       final output = _Output();
       final logger = AppLogger(
         level: extern_logger.Level.debug,
@@ -62,8 +69,10 @@ void main() {
       final exception = Exception('Test Platform error');
       final stackTrace = StackTrace.current;
 
+      // Act
       final result = logger.platformError(exception, stackTrace);
 
+      // Assert
       expect(result, isTrue);
     });
   });

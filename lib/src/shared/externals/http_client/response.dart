@@ -33,7 +33,7 @@ class Response<T> {
         data: data,
         originalData: response.data,
         statusCode: response.statusCode!,
-        statusMessage: response.statusMessage!,
+        statusMessage: response.statusMessage ?? '',
       );
     } catch (e, s) {
       throw UserFriendlyError.fatalRequestApi(cause: e, stackTrace: s);

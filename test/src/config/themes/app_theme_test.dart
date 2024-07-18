@@ -4,10 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../../../fixtures/app_mocks.dart';
+import '../../../fixtures/extenal_mock.dart';
 import '../../../flutter_test_config.dart';
-import '../../shared/externals/http_client/http_interceptors_test.dart';
-
-class MockBuildContext extends Mock implements BuildContext {}
 
 void main() {
   group('AppTheme Tests', () {
@@ -26,17 +25,24 @@ void main() {
     });
 
     test('should create light theme by default', () {
+      // Act
       final appTheme = AppTheme(Brightness.light, mockAppLogger);
+
+      // Assert
       expect(appTheme.brightnessValue, Brightness.light);
       expect(appTheme.theme.brightness, Brightness.light);
     });
 
     test('should change theme to dark', () async {
+      // Arrange
       final appTheme = AppTheme(Brightness.light, mockAppLogger);
+
       when(() => mockAppSettingsRepository.saveThemeMode(any())).thenAnswer((_) async => {});
 
+      // Act
       await appTheme.change(Brightness.dark, MockBuildContext());
 
+      // Assert
       verify(
         () => mockAppLogger.d('[AppTheme] Changing theme to Brightness.dark'),
       ).called(1);
@@ -45,12 +51,14 @@ void main() {
     });
 
     test('should create correct theme data', () async {
+      // Arrange
       final appTheme = AppTheme(Brightness.light, mockAppLogger);
 
+      // Act
       await appTheme.change(Brightness.light, mockContext);
-
       final themeData = appTheme.theme;
 
+      // Assert
       expect(themeData.colorScheme.primary, appTheme.colorTokens.primaryColor);
       expect(
         themeData.colorScheme.secondary,
@@ -67,6 +75,7 @@ void main() {
     });
 
     test('should change theme and notify listeners', () async {
+      // Arrange
       final appTheme = AppTheme(Brightness.light, mockAppLogger);
 
       when(() => mockAppSettingsRepository.saveThemeMode(any())).thenAnswer((_) async => {});
@@ -76,26 +85,34 @@ void main() {
         isNotified = true;
       });
 
+      // Act
       await appTheme.change(Brightness.dark, MockBuildContext());
 
+      // Assert
       expect(isNotified, isTrue);
     });
 
     test('should initialize theme from platform if not yet initialized', () async {
+      // Arrange
       final appTheme = AppTheme(Brightness.light, mockAppLogger);
 
       when(mockAppSettingsRepository.getThemeMode).thenAnswer((_) async => Brightness.dark);
 
+      // Act
       await appTheme.initFromPlatformIfNotYet(mockContext);
 
+      // Assert
       verify(mockAppSettingsRepository.getThemeMode).called(1);
     });
 
     test('should do nothing when the theme from the platform is already initialized', () async {
+      // Arrange
       final appTheme = AppTheme(Brightness.light, mockAppLogger)..isInitedFromPlatform = true;
 
+      // Act
       await appTheme.initFromPlatformIfNotYet(mockContext);
 
+      // Assert
       verifyNever(mockAppSettingsRepository.getThemeMode);
     });
   });

@@ -66,6 +66,7 @@ coverage_report:
 		'**/*.freezed.dart' \
 		'**/*.injectable.dart' \
 		'lib/src/config/themes/tokens/**' \
+		'lib/src/**/models/**' \
 		'lib/src/config/routes/**' \
 		'lib/src/shared/exceptions/**' \
 		'lib/src/**/entities/**' \
@@ -73,7 +74,7 @@ coverage_report:
 	cat coverage/coverage_with_exclusion.info > coverage/lcov.info  &&\
 	rm coverage/coverage_with_exclusion.info &&\
 	genhtml coverage/lcov.info -o ./coverage &&\
-	fvm flutter pub run test_cov_console --exclude='developer,lib/main.dart,lib/generated/,i10n,lib/src/config/themes/tokens/,lib/src/di/,lib/src/config/routes/,entities,.freezed.dart,.g.dart,lib/src/shared/exceptions/' &&\
+	fvm flutter pub run test_cov_console --exclude='developer,lib/main.dart,lib/generated/,i10n,lib/src/config/themes/tokens/,lib/src/di/,lib/src/config/routes/,entities,models,.freezed.dart,.g.dart,lib/src/shared/exceptions/' &&\
 	echo "\n\n-------------------------\n\nReport generated, open file into navigator: coverage/index.html\n"
 
 

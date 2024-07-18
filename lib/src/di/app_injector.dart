@@ -3,6 +3,8 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
+import '../features/movies/datasources/movie_datasource.dart';
+import '../features/movies/datasources/remote/movie_remote_datasource.dart';
 import '../shared/externals/app_logger.dart';
 import '../shared/externals/http_client/client.dart';
 import '../shared/externals/http_client/http_interceptors.dart';
@@ -37,6 +39,14 @@ abstract class AppModule {
           receiveTimeout: const Duration(seconds: 15),
         ),
       )..addInterceptor(interceptors);
+
+  @prod
+  @dev
+  @remoteDataSource
+  MovieDataSource weatherRemoteDataSource(
+    @apiMoviesClient AppHttpClient client,
+  ) =>
+      MovieRemoteDataSource(client: client);
 }
 
 @InjectableInit(

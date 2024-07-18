@@ -1,25 +1,41 @@
 {
-  "@@locale": "en",
-  "appName": "Movie App Challenge",
-  "settingsLabel": "Settings",
-  "dashboardLabel": "Dashboard",
-  "moviesLabel": "Movies",
-  "aboutLabel": "About",
-  "menuLabel": "Menu",
-  "developThemeShowcase": "Develop Theme Showcase",
-
-  "darkMode": "Dark Mode",
-  "errorTitle": "Ops! Something went wrong.",
-  "fatalError": "An unexpected error occurred. Please try again later.",
-  "fatalErrorRequestApi": "Error occurred while accessing the server. Please try again later.",
-  "tryAgainButtonLabel": "Try again",
-
-  "developerLabel": "Developer",
-  "licenseLabel": "License",
-  "licenseInfo": "This app is licensed under the MIT License",
-  "dataSourceLabel": "Data source",
-  "dataProvidedBy": "Data provided by Golden Raspberry Awards"
-
-
- 
-}
+    "@@locale": "en",
+    "appName": "Movie App Challenge",
+    "settingsLabel": "Settings",
+    "dashboardLabel": "Dashboard",
+    "moviesLabel": "Movies",
+    "aboutLabel": "About",
+    "menuLabel": "Menu",
+    "developThemeShowcase": "Develop Theme Showcase",
+  
+    "darkMode": "Dark Mode",
+    "errorTitle": "Oops! Something went wrong.",
+    "fatalError": "An unexpected error occurred. Please try again later.",
+    "fatalErrorRequestApi": "An error occurred while accessing the server. Please try again later.",
+    "tryAgainButtonLabel": "Try Again",
+  
+    "developerLabel": "Developer",
+    "licenseLabel": "License",
+    "licenseInfo": "This app is licensed under the MIT License",
+    "dataSourceLabel": "Data Source",
+    "dataProvidedBy": "Data provided by Golden Raspberry Awards",
+    
+    "moviesNotFoundMessage": "Movies not found",
+  
+    "winnersOnlyLabel": "Winners Only",
+    "yearLabel": "Year",
+    "all": "All",
+  
+    "producersLabel": "{count, plural, =0{No producers} =1{Producer} other{Producers}}:",
+    "@producersLabel": {
+        "placeholders": {
+            "count": {}
+        }
+    },
+    "studiosLabel": "{count, plural, =0{No studios} =1{Studio} other{Studios}}:",
+    "@studiosLabel": {
+        "placeholders": {
+            "count": {}
+        }
+    }
+  }

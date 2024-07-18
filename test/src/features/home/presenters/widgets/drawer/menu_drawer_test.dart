@@ -27,14 +27,16 @@ void main() {
     testWidgets('moviesItem should render correctly', (tester) async {
       final item = AppMenu.moviesItem;
 
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: ListTile(
-            leading: Icon(item.icon),
-            title: Text(item.label),
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: ListTile(
+              leading: Icon(item.icon),
+              title: Text(item.label),
+            ),
           ),
         ),
-      ));
+      );
 
       expect(find.byIcon(Icons.movie), findsOneWidget);
       expect(find.text(S.current.moviesLabel), findsOneWidget);
@@ -43,14 +45,16 @@ void main() {
     testWidgets('settingsItem should render correctly', (tester) async {
       final item = AppMenu.settingsItem;
 
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: ListTile(
-            leading: Icon(item.icon),
-            title: Text(item.label),
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: ListTile(
+              leading: Icon(item.icon),
+              title: Text(item.label),
+            ),
           ),
         ),
-      ));
+      );
 
       expect(find.byIcon(Icons.settings), findsOneWidget);
       expect(find.text(S.current.settingsLabel), findsOneWidget);
@@ -59,14 +63,16 @@ void main() {
     testWidgets('openMenuItem should render correctly', (tester) async {
       final item = AppMenu.openMenuItem;
 
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: ListTile(
-            leading: Icon(item.icon),
-            title: Text(item.label),
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: ListTile(
+              leading: Icon(item.icon),
+              title: Text(item.label),
+            ),
           ),
         ),
-      ));
+      );
 
       expect(find.byIcon(Icons.menu), findsOneWidget);
       expect(find.text(S.current.menuLabel), findsOneWidget);
@@ -75,14 +81,16 @@ void main() {
     testWidgets('aboutMenu should render correctly', (tester) async {
       final item = AppMenu.aboutMenu;
 
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: ListTile(
-            leading: Icon(item.icon),
-            title: Text(item.label),
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: ListTile(
+              leading: Icon(item.icon),
+              title: Text(item.label),
+            ),
           ),
         ),
-      ));
+      );
 
       expect(find.byIcon(Icons.info), findsOneWidget);
       expect(find.text(S.current.aboutLabel), findsOneWidget);
@@ -91,14 +99,16 @@ void main() {
     testWidgets('developerShowCaseItemMenu should render correctly', (tester) async {
       final item = AppMenu.developerShowCaseItemMenu;
 
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: ListTile(
-            leading: Icon(item.icon),
-            title: Text(item.label),
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: ListTile(
+              leading: Icon(item.icon),
+              title: Text(item.label),
+            ),
           ),
         ),
-      ));
+      );
 
       expect(find.byIcon(Icons.developer_mode), findsOneWidget);
       expect(find.text(S.current.developThemeShowcase), findsOneWidget);
@@ -107,18 +117,22 @@ void main() {
     testWidgets('navigatorItems should contain correct items', (tester) async {
       final items = AppMenu.navigatorItems;
 
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: ListView(
-            children: items
-                .map((item) => ListTile(
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: ListView(
+              children: items
+                  .map(
+                    (item) => ListTile(
                       leading: Icon(item.icon),
                       title: Text(item.label),
-                    ))
-                .toList(),
+                    ),
+                  )
+                  .toList(),
+            ),
           ),
         ),
-      ));
+      );
 
       expect(find.byIcon(Icons.home), findsOneWidget);
       expect(find.text(S.current.dashboardLabel), findsOneWidget);
@@ -136,18 +150,22 @@ void main() {
     testWidgets('drawerMenuItemItems should contain correct items', (tester) async {
       final items = AppMenu.drawerMenuItemItems;
 
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: ListView(
-            children: items
-                .map((item) => ListTile(
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: ListView(
+              children: items
+                  .map(
+                    (item) => ListTile(
                       leading: Icon(item.icon),
                       title: Text(item.label),
-                    ))
-                .toList(),
+                    ),
+                  )
+                  .toList(),
+            ),
           ),
         ),
-      ));
+      );
 
       expect(find.byIcon(Icons.settings), findsOneWidget);
       expect(find.text(S.current.settingsLabel), findsOneWidget);
