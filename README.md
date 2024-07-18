@@ -3,6 +3,7 @@
 An application showcasing the nominees and winners of the Worst Picture category in the Golden Raspberry Awards.
 
 ### Project Status
+![CI](https://github.com/gustavomoda/app_movie_challenge/actions/workflows/ci.yml/badge.svg)
 
 - Currently in development.
 - Not yet ready for production.
