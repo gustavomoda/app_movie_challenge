@@ -26,4 +26,34 @@ class MovieRemoteDataSource implements MovieDataSource {
     );
     return response.data!;
   }
+
+  @override
+  Future<MinMaxWinnerIntervalProducerResponseModel> maxMinWinIntervalProducers() async {
+    final response = await client.get<MinMaxWinnerIntervalProducerResponseModel>(
+      '',
+      queryParameters: {'projection': 'max-min-win-interval-for-producers'},
+      fromJson: MinMaxWinnerIntervalProducerResponseModel.fromJson,
+    );
+    return response.data!;
+  }
+
+  @override
+  Future<StudiosWithWinCountResponseModel> studiosWithWinCount() async {
+    final response = await client.get<StudiosWithWinCountResponseModel>(
+      '',
+      queryParameters: {'projection': 'studios-with-win-count'},
+      fromJson: StudiosWithWinCountResponseModel.fromJson,
+    );
+    return response.data!;
+  }
+
+  @override
+  Future<WinnerByYearResponseModel> yearsWithMultipleWinners() async {
+    final response = await client.get<WinnerByYearResponseModel>(
+      '',
+      queryParameters: {'projection': 'years-with-multiple-winners'},
+      fromJson: WinnerByYearResponseModel.fromJson,
+    );
+    return response.data!;
+  }
 }

@@ -24,3 +24,34 @@ class MoviesResponseModel with _$MoviesResponseModel {
   factory MoviesResponseModel.fromJson(Map<String, dynamic> json) =>
       _$MoviesResponseModelFromJson(json);
 }
+
+@freezed
+class StudiosWithWinCountResponseModel with _$StudiosWithWinCountResponseModel {
+  const factory StudiosWithWinCountResponseModel({
+    required List<StudiosWithWinCount> studios,
+  }) = _StudiosWithWinCountResponseModel;
+
+  factory StudiosWithWinCountResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$StudiosWithWinCountResponseModelFromJson(json);
+}
+
+@freezed
+class MinMaxWinnerIntervalProducerResponseModel with _$MinMaxWinnerIntervalProducerResponseModel {
+  const factory MinMaxWinnerIntervalProducerResponseModel({
+    required List<WinnerIntervalProducer> min,
+    required List<WinnerIntervalProducer> max,
+  }) = _MinMaxWinnerIntervalProducerResponseModel;
+
+  factory MinMaxWinnerIntervalProducerResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$MinMaxWinnerIntervalProducerResponseModelFromJson(json);
+}
+
+@freezed
+class WinnerByYearResponseModel with _$WinnerByYearResponseModel {
+  const factory WinnerByYearResponseModel({
+    required List<WinnerByYear> years,
+  }) = _WinnerByYearResponseModel;
+
+  factory WinnerByYearResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$WinnerByYearResponseModelFromJson(json);
+}

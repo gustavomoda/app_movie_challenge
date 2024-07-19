@@ -45,8 +45,7 @@ class _MainApp extends StatefulWidget {
   State<_MainApp> createState() => _MainAppState();
 }
 
-class _MainAppState extends State<_MainApp>
-    with WidgetsBindingObserver, WidgetsBindingObserver {
+class _MainAppState extends State<_MainApp> with WidgetsBindingObserver, WidgetsBindingObserver {
   final logger = appInjector<AppLogger>();
 
   @override

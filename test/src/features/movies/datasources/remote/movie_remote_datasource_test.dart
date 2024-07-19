@@ -13,7 +13,7 @@ void main() {
   final dataSource = MovieRemoteDataSource(client: httpClient);
   group('Movie Features:', () {
     group('MovieRemoteDataSource:', () {
-      test('should fetch movies and return MoviesResponseModel', () async {
+      test('getMovies: should fetch movies and return MoviesResponseModel', () async {
         // Arrange
         final data = loadFixtureFromJsonFile('remote/movies_list.json');
 
@@ -39,6 +39,73 @@ void main() {
         // Assert
         expect(result, isA<MoviesResponseModel>());
         expect(result.content.length, equals(data['content'].length));
+      });
+
+      test(
+          'maxMinWinIntervalProducers: should fetch data from API and return MinMaxWinnerIntervalProducerResponseModel',
+          () async {
+        // Arrange
+        final data = loadFixtureFromJsonFile(
+          'remote/max-min-win-interval-for-producers.json',
+        );
+
+        dioAdapterMock.onGet(
+          '',
+          queryParameters: {'projection': 'max-min-win-interval-for-producers'},
+          (request) => request.reply(200, data),
+        );
+
+        // Act
+        final result = await dataSource.maxMinWinIntervalProducers();
+
+        // Assert
+        expect(result, isA<MinMaxWinnerIntervalProducerResponseModel>());
+        expect(result.max.length, equals(data['max'].length));
+        expect(result.min.length, equals(data['min'].length));
+      });
+
+      test(
+          'studiosWithWinCount: should fetch data from API and return MinMaxWinnerIntervalProducerResponseModel',
+          () async {
+        // Arrange
+        final data = loadFixtureFromJsonFile(
+          'remote/studios-with-win-count.json',
+        );
+
+        dioAdapterMock.onGet(
+          '',
+          queryParameters: {'projection': 'studios-with-win-count'},
+          (request) => request.reply(200, data),
+        );
+
+        // Act
+        final result = await dataSource.studiosWithWinCount();
+
+        // Assert
+        expect(result, isA<StudiosWithWinCountResponseModel>());
+        expect(result.studios.length, equals(data['studios'].length));
+      });
+
+      test(
+          'yearsWithMultipleWinners: should fetch data from API and return MinMaxWinnerIntervalProducerResponseModel',
+          () async {
+        // Arrange
+        final data = loadFixtureFromJsonFile(
+          'remote/years-with-multiple-winners.json',
+        );
+
+        dioAdapterMock.onGet(
+          '',
+          queryParameters: {'projection': 'years-with-multiple-winners'},
+          (request) => request.reply(200, data),
+        );
+
+        // Act
+        final result = await dataSource.yearsWithMultipleWinners();
+
+        // Assert
+        expect(result, isA<WinnerByYearResponseModel>());
+        expect(result.years.length, equals(data['years'].length));
       });
     });
   });

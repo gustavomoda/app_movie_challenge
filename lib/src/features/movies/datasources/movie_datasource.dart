@@ -7,4 +7,10 @@ abstract class MovieDataSource {
     bool? winner,
     int? year,
   });
+
+  Future<WinnerByYearResponseModel> yearsWithMultipleWinners();
+
+  Future<MinMaxWinnerIntervalProducerResponseModel> maxMinWinIntervalProducers();
+
+  Future<StudiosWithWinCountResponseModel> studiosWithWinCount();
 }
