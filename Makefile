@@ -1,7 +1,7 @@
 .PHONY: setup-dev install clean build-runner-clean build-runner watch debug-app test
 
 .setup-flutter: 
-	@yes | fvm use
+	@yes | fvm use stable
 
 setup-dev: .setup-flutter clean install i10n-generate build-runner
 	@echo "\nEverything is ready to run app! 🚀\n"
@@ -22,11 +22,11 @@ rebuild: build-runner-clean build-runner
 
 build-runner-clean: 
 	@echo "Running build runner..."
-	@dart run build_runner clean
+	@fvm dart run build_runner clean
 
 build-runner: 
 	@echo "Running build runner..."
-	@dart run build_runner build --delete-conflicting-outputs
+	@fvm dart run build_runner build --delete-conflicting-outputs
 
 i10n-generate: 
 	@echo "Generating i10n files..."
@@ -34,7 +34,7 @@ i10n-generate:
 
 watch: 
 	@echo "Running build runner in watch mode..."
-	@dart run build_runner watch --delete-conflicting-outputs
+	@fvm dart run build_runner watch --delete-conflicting-outputs
 
 debug-app:
 ifeq ($(device),)
