@@ -72,3 +72,14 @@ class WinnerByYear with _$WinnerByYear {
 
   factory WinnerByYear.fromJson(Map<String, dynamic> json) => _$WinnerByYearFromJson(json);
 }
+
+@freezed
+class MinMaxWinnerIntervalProducer with _$MinMaxWinnerIntervalProducer {
+  const factory MinMaxWinnerIntervalProducer({
+    required List<WinnerIntervalProducer> min,
+    required List<WinnerIntervalProducer> max,
+  }) = _MinMaxWinnerIntervalProducer;
+
+  factory MinMaxWinnerIntervalProducer.fromJson(Map<String, dynamic> json) =>
+      _$MinMaxWinnerIntervalProducerFromJson(json);
+}
