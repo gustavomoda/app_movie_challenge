@@ -15,8 +15,6 @@ dependencies:
   #
   # For UI
   cupertino_icons: ^1.0.6
-  google_fonts: ^6.2.1
-  timeago: ^3.6.1
   flutter_keyboard_visibility: ^6.0.0
 
   #
@@ -45,16 +43,7 @@ dependencies:
 
   # For network.
   dio: ^5.4.3+1
-
-  #
-  # For permisstions device.
-  permission_handler: ^11.3.1
-  app_tracking_transparency: ^2.0.4
   
-  #
-  # For device access.
-  package_info_plus: ^8.0.0
-
   #
   # For localization.
   intl: ">=0.18.0 <0.20.0"
@@ -62,6 +51,7 @@ dependencies:
   #
   # For logs.
   logger: ^2.2.0
+  flutter_multi_formatter: ^2.13.0
  
 dev_dependencies:
   flutter_test:

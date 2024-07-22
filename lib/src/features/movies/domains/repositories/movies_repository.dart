@@ -14,6 +14,11 @@ abstract class MoviesRepository {
   Future<Either<UserFriendlyError, MinMaxWinnerIntervalProducer>> maxMinWinIntervalProducers();
 
   Future<Either<UserFriendlyError, List<StudiosWithWinCount>>> studiosWithWinCount();
+
+  Future<Either<UserFriendlyError, List<Movie>>> moviesByYear({
+    int? year,
+    bool? winner,
+  });
 }
 
 @Injectable(as: MoviesRepository)
@@ -84,6 +89,22 @@ class MoviesRepositoryImpl implements MoviesRepository {
       return Right(
         MinMaxWinnerIntervalProducer(min: result.min, max: result.max),
       );
+    } on UserFriendlyError catch (e) {
+      return Left(e);
+    } catch (e, stackTrace) {
+      return Left(
+        UserFriendlyError.defaultFatalError(cause: e, stackTrace: stackTrace),
+      );
+    }
+  }
+
+  @override
+  Future<Either<UserFriendlyError, List<Movie>>> moviesByYear({
+    int? year,
+    bool? winner,
+  }) async {
+    try {
+      return Right(await movieRemote.moviesByYear(year: year, winner: winner));
     } on UserFriendlyError catch (e) {
       return Left(e);
     } catch (e, stackTrace) {

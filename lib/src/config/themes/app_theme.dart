@@ -75,9 +75,6 @@ class AppTheme with ChangeNotifier {
 
     final textTheme = data.textTheme;
     return data.copyWith(
-      inputDecorationTheme: data.inputDecorationTheme.copyWith(
-        border: const OutlineInputBorder(),
-      ),
       textTheme: textTheme.copyWith(
         displayLarge: textTheme.displayLarge?.copyWith(fontSize: 32),
         displayMedium: textTheme.displayMedium?.copyWith(fontSize: 30),
@@ -87,10 +84,10 @@ class AppTheme with ChangeNotifier {
         titleLarge: textTheme.titleLarge?.copyWith(fontSize: 22),
         titleMedium: textTheme.titleMedium?.copyWith(fontSize: 16),
         titleSmall: textTheme.titleSmall?.copyWith(fontSize: 14),
-        bodyLarge: textTheme.bodyLarge?.copyWith(fontSize: 16, fontWeight: FontWeight.w400),
-        bodyMedium: textTheme.bodyMedium?.copyWith(fontSize: 14),
-        bodySmall: textTheme.bodySmall?.copyWith(fontSize: 12),
-        labelLarge: textTheme.labelLarge?.copyWith(fontSize: 14),
+        bodyLarge: textTheme.bodyLarge?.copyWith(fontSize: 14, fontWeight: FontWeight.bold),
+        bodyMedium: textTheme.bodyMedium?.copyWith(fontSize: 12),
+        bodySmall: textTheme.bodySmall?.copyWith(fontSize: 10),
+        labelLarge: textTheme.labelLarge?.copyWith(fontSize: 13),
         labelSmall: textTheme.labelSmall?.copyWith(fontSize: 11),
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(

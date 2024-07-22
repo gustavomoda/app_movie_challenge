@@ -13,12 +13,20 @@ An application showcasing the nominees and winners of the Worst Picture category
 
 # Architecture
 
+#### Clean Architecture Approach
+
 The project is structured using Clean Architecture, organized into several layers:
 
 - **datasources**: Contains remote and local data sources.
 - **domain**: Comprises entities, use cases, and repositories.
 - **presenters**: Encompasses the user interface components and UI controllers, including blocs, to bridge presentation logic and the view layer.
 
+### UI: Adopting Atomic Design System
+
+We adopted an Atomic Design System with tokens and built-in state control (normal, loading, and error), creating a fluid and isolated interface with platform-specific customizations and responsiveness. This system seamlessly integrates the app with UI/UX. The Atomic Design pattern streamlines development and maintains visual and functional consistency, enhancing the experience for both developers and users.
+
+
+### Package-Feature Approach
 
 Adopting a package-feature approach, the project is segmented into the following packages:
 

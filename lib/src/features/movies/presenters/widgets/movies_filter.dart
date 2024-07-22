@@ -33,7 +33,7 @@ class _YearFilterInput extends StatelessWidget {
   Widget build(BuildContext context) {
     var year = DateTime.now().year;
     final items = <String>[
-      S.current.all,
+      S.of(context).all,
       ...List.generate(100, (index) => (year--).toString()),
     ]
         .map<DropdownMenuItem<String>>(
@@ -45,15 +45,15 @@ class _YearFilterInput extends StatelessWidget {
         .toList();
     return Row(
       children: [
-        AppTexts.labelLarge(S.current.yearLabel),
+        AppTexts.labelLarge(S.of(context).yearLabel),
         AppGaps.xs,
         BlocBuilder<MoviesBloc, MoviesState>(
           builder: (context, state) => DropdownButton<String>(
-            value: state.filter.year?.toString() ?? S.current.all,
+            value: state.filter.year?.toString() ?? S.of(context).all,
             onChanged: (newValue) => context.read<MoviesBloc>().add(
                   FilterMovieEvent(
                     filter: context.read<MoviesBloc>().state.filter.copyWith(
-                          year: newValue == S.current.all || (newValue?.isEmpty ?? true)
+                          year: newValue == S.of(context).all || (newValue?.isEmpty ?? true)
                               ? null
                               : int.parse(newValue!),
                         ),
@@ -71,7 +71,7 @@ class _WinnerilterInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Row(
         children: [
-          AppTexts.capiton(S.current.winnersOnlyLabel),
+          AppTexts.capiton(S.of(context).winnersOnlyLabel),
           BlocBuilder<MoviesBloc, MoviesState>(
             builder: (context, state) => Switch(
               value: state.filter.winner ?? false,

@@ -1,4 +1,5 @@
 import '../../../../shared/externals/http_client/client.dart';
+import '../../domains/entities/movie.dart';
 import '../models/movies_response.dart';
 import '../movie_datasource.dart';
 
@@ -53,6 +54,19 @@ class MovieRemoteDataSource implements MovieDataSource {
       '',
       queryParameters: {'projection': 'years-with-multiple-winners'},
       fromJson: WinnerByYearResponseModel.fromJson,
+    );
+    return response.data!;
+  }
+
+  @override
+  Future<List<Movie>> moviesByYear({int? year, bool? winner}) async {
+    final response = await client.getAsList<Movie>(
+      '',
+      queryParameters: {
+        'winner': winner,
+        'year': year,
+      },
+      fromJson: Movie.fromJson,
     );
     return response.data!;
   }

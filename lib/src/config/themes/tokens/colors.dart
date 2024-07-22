@@ -14,7 +14,7 @@ abstract class AppColorsTokens {
 
 class AppColorsLightTokens implements AppColorsTokens {
   @override
-  Color get primaryColor => const Color(0xFFAB540D);
+  Color get primaryColor => const Color.fromARGB(255, 239, 170, 85);
 
   @override
   Color get onPrimaryColor => Colors.white;
@@ -46,7 +46,7 @@ class AppColorsDarkTokens implements AppColorsTokens {
   Color get primaryColor => const Color.fromARGB(255, 239, 170, 85);
 
   @override
-  Color get onPrimaryColor => const Color.fromRGBO(15, 40, 70, 1);
+  Color get onPrimaryColor => Colors.white;
 
   @override
   Color get secondaryColor => const Color(0xFF2F8D85);

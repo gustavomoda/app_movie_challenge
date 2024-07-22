@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../../../config/themes/app_theme.dart';
 import '../../../../config/themes/tokens/text.dart';
 
 class AppTexts extends StatelessWidget {
@@ -278,48 +276,13 @@ class AppTexts extends StatelessWidget {
   final TextAlign? textAlign;
   final FontWeight? fontWeight;
 
-  // static const TextStyle _emptyStyle = TextStyle();
-
-  // static TextStyle _AppTextTokens style, {Color? color) =>
-  //     (style ?? _emptyStyle).copyWith(color: color);
-
   @override
   Widget build(BuildContext context) {
-    final textTheme = context.watch<AppTheme>().theme.textTheme;
-    TextStyle? textStyle;
-    switch (style) {
-      case AppTextTokens.displayLarge:
-        textStyle = textTheme.displayLarge;
-      case AppTextTokens.displayMedium:
-        textStyle = textTheme.displayMedium;
-      case AppTextTokens.displaySmall:
-        textStyle = textTheme.displaySmall;
-      case AppTextTokens.headlineMedium:
-        textStyle = textTheme.headlineMedium;
-      case AppTextTokens.headlineSmall:
-        textStyle = textTheme.headlineSmall;
-      case AppTextTokens.titleLarge:
-        textStyle = textTheme.titleLarge;
-      case AppTextTokens.titleMedium:
-        textStyle = textTheme.titleMedium;
-      case AppTextTokens.titleSmall:
-        textStyle = textTheme.titleSmall;
-      case AppTextTokens.bodyLarge:
-        textStyle = textTheme.bodyLarge;
-      case AppTextTokens.bodyMedium:
-        textStyle = textTheme.bodyMedium;
-      case AppTextTokens.bodySmall:
-        textStyle = textTheme.bodySmall;
-      case AppTextTokens.labelLarge:
-        textStyle = textTheme.labelLarge;
-      case AppTextTokens.labelSmall:
-        textStyle = textTheme.labelSmall;
-      case AppTextTokens.capiton:
-        textStyle = textTheme.labelSmall!.copyWith(fontSize: 8);
-    }
+    final textStyle = style.toTextStyle(context);
+
     return Text(
       text,
-      style: (textStyle ?? const TextStyle()).copyWith(color: color, fontWeight: fontWeight),
+      style: textStyle.copyWith(color: color, fontWeight: fontWeight),
       textAlign: textAlign,
       maxLines: maxLines,
     );

@@ -82,6 +82,7 @@ MaterialApp wrapperMaterialAppForTest(Widget body) {
   return MaterialApp(
     localizationsDelegates: locale.localizationsDelegates,
     supportedLocales: locale.supportedLocales,
+    locale: locale.current,
     theme: appTheme.theme,
     home: Material(
       child: Builder(

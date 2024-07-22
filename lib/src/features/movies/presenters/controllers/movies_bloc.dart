@@ -27,7 +27,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
   final AppLogger logger;
   final FetchMoviesUseCase fetchMovies;
 
-  Future<FutureOr<void>> _onFetchMovieEvent(
+  FutureOr<void> _onFetchMovieEvent(
     FetchMovieEvent event,
     Emitter<MoviesState> emit,
   ) async {

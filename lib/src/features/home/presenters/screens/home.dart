@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../config/routes/app_route.dart';
-import '../../../dashboard/presenters/dashboard.dart';
+import '../../../dashboard/presenters/screens/dashboard.dart';
 import '../../../movies/presenters/screens/movies.dart';
 import '../../domain/entities/app_menu.dart';
 import '../widgets/drawer/menu_drawer.dart';

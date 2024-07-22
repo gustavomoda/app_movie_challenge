@@ -1,41 +1,75 @@
 {
-  "@@locale": "pt_BR",
-  "appName": "Desafio do App de Filmes",
-  "settingsLabel": "Configurações",
-  "dashboardLabel": "Painel",
-  "moviesLabel": "Filmes",
-  "aboutLabel": "Sobre",
-  "menuLabel": "Menu",
-  "developThemeShowcase": "Mostrar Tema de Desenvolvimento",
-
-  "darkMode": "Modo Escuro",
-  "errorTitle": "Ops! Algo deu errado.",
-  "fatalError": "Ocorreu um erro inesperado. Por favor, tente novamente mais tarde.",
-  "fatalErrorRequestApi": "Ocorreu um erro ao acessar o servidor. Por favor, tente novamente mais tarde.",
-  "tryAgainButtonLabel": "Tentar Novamente",
-
-  "developerLabel": "Desenvolvedor",
-  "licenseLabel": "Licença",
-  "licenseInfo": "Este aplicativo está licenciado sob a Licença MIT",
-  "dataSourceLabel": "Fonte de Dados",
-  "dataProvidedBy": "Dados fornecidos pelo Golden Raspberry Awards",
-  
-  "moviesNotFoundMessage": "Filmes não encontrados",
-
-  "winnersOnlyLabel": "Apenas Vencedores",
-  "yearLabel": "Ano",
-  "all": "Todos",
-
-  "producersLabel": "{count, plural, =0{Nenhum produtor} =1{Produtor} other{Produtores}}:",
-  "@producersLabel": {
-      "placeholders": {
-          "count": {}
-      }
-  },
-  "studiosLabel": "{count, plural, =0{Nenhum estúdio} =1{Estúdio} other{Estúdios}}:",
-  "@studiosLabel": {
-      "placeholders": {
-          "count": {}
-      }
-  }
+    "@@locale": "pt",
+    "appName": "Desafio do Aplicativo de Filmes",
+    "settingsLabel": "Configurações",
+    "dashboardLabel": "Painel",
+    "moviesLabel": "Filmes",
+    "aboutLabel": "Sobre",
+    "menuLabel": "Menu",
+    "developThemeShowcase": "Develop Theme Showcase",
+    "darkMode": "Modo Escuro",
+    "errorTitle": "Ops! Algo deu errado.",
+    "fatalError": "Ocorreu um erro inesperado. Por favor, tente novamente mais tarde.",
+    "fatalErrorRequestApi": "Ocorreu um erro ao acessar o servidor. Por favor, tente novamente mais tarde.",
+    "tryAgainButtonLabel": "Tente Novamente",
+    "developerLabel": "Desenvolvedor",
+    "licenseLabel": "Licença",
+    "licenseInfo": "Este aplicativo é licenciado sob a Licença MIT",
+    "dataSourceLabel": "Fonte de Dados",
+    "dataProvidedBy": "Dados fornecidos pelo Golden Raspberry Awards",
+    "moviesNotFoundMessage": "Filmes não encontrados",
+    "winnersLabel": "Vencedores",
+    "winnersOnlyLabel": "Apenas Vencedores",
+    "yearLabel": "Ano",
+    "all": "Todos",
+    "yearsWithMultipleWinnersTitle": "Lista de anos com múltiplos vencedores",
+    "topStudiosWithWinnersTitle": "Top 3 estúdios com vencedores",
+    "minMaxWinnerIntervalProducersTitle": "Produtores com o maior e menor intervalo entre vitórias",
+    "winnersMoviesByYearsTitle": "Lista de filmes vencedores por ano",
+    "producerLabel": "Produtor",
+    "intervalLabel": "Intervalo",
+    "previewYearLabel": "Ano Anterior",
+    "followingYearLabel": "Ano Seguinte",
+    "maximumLabel": "Máximo",
+    "minimumLabel": "Mínimo",
+    "idLabel": "ID",
+    "titleLabel": "Título",
+    "requiredFieldErrorMessage": "Campo obrigatório",
+    "invalidYearErrorMessage": "O ano deve ser maior que 1900 e menor que o ano atual",
+    "producersLabel": "{count, plural, =0{Nenhum produtor} =1{Produtor} other{Produtores}}:",
+    "@producersLabel": {
+        "placeholders": {
+            "count": {}
+        }
+    },
+    "studiosLabel": "{count, plural, =0{Nenhum estúdio} =1{Estúdio} other{Estúdios}}:",
+    "@studiosLabel": {
+        "placeholders": {
+            "count": {}
+        }
+    },
+    "displayInteger": "{value}",
+    "@displayInteger": {
+        "placeholders": {
+            "value": {
+                "format": "decimalPattern",
+                "optionalParameters": {
+                    "customPattern": "#0"
+                },
+                "type": "int"
+            }
+        }
+    },
+    "displayDecimal": "{value}",
+    "@displayDecimal": {
+        "placeholders": {
+            "value": {
+                "format": "decimalPattern",
+                "optionalParameters": {
+                    "customPattern": "#0.#"
+                },
+                "type": "double"
+            }
+        }
+    }
 }

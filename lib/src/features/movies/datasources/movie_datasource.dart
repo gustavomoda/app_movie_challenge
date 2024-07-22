@@ -1,3 +1,4 @@
+import '../domains/entities/movie.dart';
 import 'models/movies_response.dart';
 
 abstract class MovieDataSource {
@@ -13,4 +14,6 @@ abstract class MovieDataSource {
   Future<MinMaxWinnerIntervalProducerResponseModel> maxMinWinIntervalProducers();
 
   Future<StudiosWithWinCountResponseModel> studiosWithWinCount();
+
+  Future<List<Movie>> moviesByYear({int? year, bool? winner});
 }

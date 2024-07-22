@@ -61,7 +61,7 @@ class AppUserFeedbacks extends StatelessWidget {
           ElevatedButton(
             onPressed: onTryAgain,
             child: Text(
-              S.current.tryAgainButtonLabel,
+              S.of(context).tryAgainButtonLabel,
               textAlign: TextAlign.center,
             ),
           ),
